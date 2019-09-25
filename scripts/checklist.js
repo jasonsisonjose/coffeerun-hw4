@@ -1,4 +1,4 @@
-(function (window) {
+(function(window) {
   'use strict';
   var App = window.App || {};
   var $ = window.jQuery;
@@ -9,26 +9,26 @@
     }
 
     this.$element = $(selector);
-    if(this.$element.length === 0) {
+    if (this.$element.length === 0) {
       throw new Error("Cannot find selector element using: " + selector);
     }
   }
 
-  CheckList.prototype.addRow = function (coffeeOrder) {
+  CheckList.prototype.addRow = function(coffeeOrder) {
     this.removeRow(coffeeOrder.emailAddress);
-    var rowElement =new Row(coffeeOrder);
+    var rowElement = new Row(coffeeOrder);
     this.$element.append(rowElement.$element);
   };
 
-  CheckList.prototype.removeRow = function (email) {
+  CheckList.prototype.removeRow = function(email) {
     this.$element
       .find('[value="' + email + '"]')
       .closest('[data-coffee-order="checkbox"]')
       .remove();
   };
 
-  CheckList.prototype.addClickHandler = function (fn) {
-    this.$element.on('click', 'input',function(event) {
+  CheckList.prototype.addClickHandler = function(fn) {
+    this.$element.on('click', 'input', function(event) {
       var email = event.target.value;
       this.removeRow(email);
       fn(email);
@@ -39,7 +39,7 @@
     // $div is not an instance variable, it is a reference
     // to DOM element created by jQuery
     var $div = $('<div></div>', {
-      'data-coffee-order' : 'checkbox',
+      'data-coffee-order': 'checkbox',
       'class': 'checkbox'
     });
 
