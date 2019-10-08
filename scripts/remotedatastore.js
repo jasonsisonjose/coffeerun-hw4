@@ -1,4 +1,4 @@
-(function (window) {
+(function(window) {
   'use strict';
   var App = window.App || {};
   var $ = window.jQuery;
@@ -18,21 +18,21 @@
     });
   };
 
-  RemoteDataStore.prototype.get = function (key, cb) {
-    $.get(this.serverUrl + '/' + key, function (serverResponse) {
+  RemoteDataStore.prototype.get = function(key, cb) {
+    $.get(this.serverUrl + '/' + key, function(serverResponse) {
       console.log(serverResponse);
       //cb(serverResponse);
     });
   };
 
-  RemoteDataStore.prototype.getAll = function (cb) {
-    $.get(this.serverUrl, function (serverResponse) {
+  RemoteDataStore.prototype.getAll = function(cb) {
+    $.get(this.serverUrl, function(serverResponse) {
       console.log(serverResponse);
       //cb(serverResponse);
     });
   };
 
-  RemoteDataStore.prototype.remove = function (key) {
+  RemoteDataStore.prototype.remove = function(key) {
     $.ajax(this.serverUrl + '/' + key, {
       type: 'DELETE'
     });
