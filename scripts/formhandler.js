@@ -12,7 +12,21 @@
     if (this.$formElement.length === 0) {
       throw new Error('Could not find element with selector: ' + selector);
     }
-
+    FormHandler.prototype.addInputHandler = function(fn) {
+      console.log('Setting input handler for form');
+      this.$formElement.on('input', '[name="emailAddress"]', function(event) {
+        var emailAddress = event.target.value;
+        // console.log(fn(emailAddress));
+        var message ="";
+        if (fn(emailAddress)) {
+          event.target.setCustomValidity('');
+        }
+        else {
+          message = emailAddress + ' is not an authorized email addres!';
+          event.target.setCustomValidity(message);
+        }
+      });
+    };
     FormHandler.prototype.addSubmitHandler = function(fn) {
       console.log('setting submit handler for form');
       this.$formElement.on('submit', function(event) {
