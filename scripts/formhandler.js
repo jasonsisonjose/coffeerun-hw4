@@ -17,11 +17,10 @@
       this.$formElement.on('input', '[name="emailAddress"]', function(event) {
         var emailAddress = event.target.value;
         // console.log(fn(emailAddress));
-        var message ="";
+        var message = "";
         if (fn(emailAddress)) {
           event.target.setCustomValidity('');
-        }
-        else {
+        } else {
           message = emailAddress + ' is not an authorized email addres!';
           event.target.setCustomValidity(message);
         }
